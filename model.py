@@ -1,7 +1,7 @@
 import os
 import openai
 import time
-from data import training_file_id, validation_file_id
+from data import training_file_id
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -12,9 +12,8 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 
 create_args = {
 	"training_file": training_file_id,
-	"validation_file": validation_file_id,
 	"model": "davinci",
-	"n_epochs": 9,
+	"n_epochs": 10,
 	"batch_size": 3,
 	"learning_rate_multiplier": 0.3
 }

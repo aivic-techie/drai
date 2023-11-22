@@ -56,11 +56,7 @@ def upload_file(name):
 if __name__ == "__main__":
     print("This code will only run if the script is executed directly.")
     # To upload file and get details like the id. This should be done once
-    print(upload_file(r"C:\Users\usha\Downloads\drf-project\drai\out-val.jsonl"))
-    print(upload_file(r"C:\Users\usha\Downloads\drf-project\drai\out-train.jsonl"))
+    print(upload_file(r"C:\Users\usha\Downloads\drf-project\drai\dialogue-train.jsonl"))
+    
 
-
-training_file_id = 'file-GRPDiGGkUBG8jDwX7vdNrL7K'
-validation_file_id = 'file-aCUICLCyju4FJe58mpAtcC3d'
-
-
+training_file_id = "file-CZEijgvLbMlbxGnvj9dGJmI6" # the id of your training file
