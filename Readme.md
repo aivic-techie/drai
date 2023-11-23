@@ -58,8 +58,11 @@ curl -X POST "http://127.0.0.1:8000/chat/" -H "accept: application/json" -H "Con
 The chatbot recognizes special commands such as exit, clear, help, and info. Use these commands to interact with the chatbot:
 
 exit: End the conversation.
+
 clear: Clear the conversation history and start a new session.
+
 help: Get information on using the chatbot.
+
 info: Learn more about the chatbot and its capabilities.
 
 ### Conversation History
