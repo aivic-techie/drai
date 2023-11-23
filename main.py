@@ -18,8 +18,6 @@ app = FastAPI()
 class UserMessage(BaseModel):
     message: str
 
-# Welcome message
-print("Dr. AI: Welcome! I'm here to help you with your medical queries. Please describe your symptoms.")
 
 # Initial system message
 messages = [
@@ -53,6 +51,7 @@ async def chat(user_message: UserMessage):
             return {"reply": reply}
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
+
 
 # GET endpoint to retrieve conversation history
 @app.get("/history/")
