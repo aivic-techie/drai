@@ -75,6 +75,13 @@ OR
 curl -X GET "http://127.0.0.1:8000/history/" -H "accept: application/json"
 ```
 
+### Test
+
+To run the tests in the script
+
+```bash
+pytest test_main.py
+```
 ### Feedback
 
 Your feedback is valuable! Feel free to provide input on the chatbot responses to help improve its performance.
