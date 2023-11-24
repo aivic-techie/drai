@@ -1,1 +1,1 @@
-web: python3 -m uvicorn main:app --reload --host 0.0.0.0 --port $PORT
+web: \.venv\Scripts\uvicorn.exe main:app --reload --host 0.0.0.0 --port $PORT
