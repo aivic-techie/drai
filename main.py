@@ -24,6 +24,11 @@ messages = [
     {"role": "system", "content": "You are a medical assistant. Respond in a friendly tone with concise answers. Ask relevant follow-up questions. In severe cases, advise the user to go to the hospital immediately."},
 ]
 
+@app.get("/")
+async def root():
+    return {"greeting": "Hello, World!", "message": "Welcome to Drai API!"}
+
+
 # POST endpoint to receive user messages
 @app.post("/chat/")
 async def chat(user_message: UserMessage):
