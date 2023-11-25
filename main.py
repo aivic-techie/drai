@@ -81,4 +81,4 @@ async def chat(user_message: UserMessage):
 @app.get("/history/")
 async def get_history():
     pass
-    return {"messages": messages[1:]}
+    return {"messages": messages}
