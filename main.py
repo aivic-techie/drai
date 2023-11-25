@@ -20,6 +20,9 @@ origins = [
     "http://localhost:3000",
     "http://localhost:3001",
     "http://localhost:3001/", 
+    "https://drai-production.up.railway.app/history/",
+    "https://drai-production.up.railway.app/chat/",
+    "https://drai-production.up.railway.app/",
 ]
 
 app.add_middleware(
