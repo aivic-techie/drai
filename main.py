@@ -15,7 +15,9 @@ chat_model = "gpt-3.5-turbo"
 # Initialize FastAPI app
 app = FastAPI()
 
-origins = ["*"]
+origins = [
+    "http://localhost:3001",
+]
 
 app.add_middleware(
     CORSMiddleware,
