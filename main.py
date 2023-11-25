@@ -1,6 +1,7 @@
 import os
 import openai
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
@@ -14,6 +15,17 @@ chat_model = "gpt-3.5-turbo"
 # Initialize FastAPI app
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # Define a class for the request body
 class UserMessage(BaseModel):
     message: str
@@ -21,7 +33,10 @@ class UserMessage(BaseModel):
 
 # Initial system message
 messages = [
-    {"role": "system", "content": "You are a medical doctor. Respond in a friendly tone with concise answers. Ask relevant follow-up questions. In severe cases, advise the user to go to the hospital immediately."},
+    {
+        "role": "system",
+        "content": "As a medical assistant, provide clear and concise medical guidance and diagnosis. Communicate reassuringly and engage with users by asking pertinent follow-up questions to help with the diagnosis and guidance. Direct users to professional medical help for serious health concerns."
+    }
 ]
 
 @app.get("/")
@@ -42,7 +57,7 @@ async def chat(user_message: UserMessage):
         messages = [{"role": "system", "content": "You are a medical assistant capable of understanding symptoms."}]
         return {"reply": "Dr. Anne: Conversation cleared. Please describe your symptoms."}
     elif message_content == "/help":
-        return {"reply": "Dr. Anne: You can describe your symptoms or ask health-related questions. Type '/clear' to restart our conversation or '/exit' to end it."}
+        return {"reply": "Dr. Anne: You can describe your symptoms or ask health-related questions. Type 'clear' to restart our conversation or 'exit' to end it."}
     elif message_content == "/info":
         return {"reply": "Dr. Anne: I'm an AI-powered assistant trained to provide preliminary medical advice. Remember to consult a healthcare professional for accurate diagnosis."}
     else:
