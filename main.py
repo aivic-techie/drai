@@ -13,11 +13,19 @@ load_dotenv()
 # Access the API key securely
 openai.api_key = os.getenv("OPENAI_API_KEY")
 chat_model = "gpt-3.5-turbo"
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "http://localhost:3001/", 
+    "https://drai-production.up.railway.app/",
+]
+
 
 middleware = [
     Middleware(
         CORSMiddleware,
-        allow_origins=['*'],
+        allow_origins=origins,
         allow_credentials=True,
         allow_methods=['*'],
         allow_headers=['*']
