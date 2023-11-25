@@ -80,5 +80,7 @@ async def chat(user_message: UserMessage):
 # GET endpoint to retrieve conversation history
 @app.get("/history/")
 async def get_history():
-    pass
-    return {"messages": messages}
+    chat_history = messages[1:]
+    if not chat_history:
+        chat_history = "Drai"
+    return {"messages": chat_history}
