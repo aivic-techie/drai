@@ -2,6 +2,7 @@ import os
 import openai
 from fastapi import FastAPI, HTTPException
 # from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -13,26 +14,18 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 chat_model = "gpt-3.5-turbo"
 
-# Initialize FastAPI app
-app = FastAPI(title="Drai")
-
-origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "http://localhost:3001",
-    "http://localhost:3001/", 
-    "https://drai-production.up.railway.app/",
+middleware = [
+    Middleware(
+        CORSMiddleware,
+        allow_origins=['*'],
+        allow_credentials=True,
+        allow_methods=['*'],
+        allow_headers=['*']
+    )
 ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-    expose_headers=["*"],
-)
-
+# Initialize FastAPI app
+app = FastAPI(title="Drai", middleware=middleware)
 
 # Define a class for the request body
 class UserMessage(BaseModel):
