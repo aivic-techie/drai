@@ -13,7 +13,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 chat_model = "gpt-3.5-turbo"
 
 # Initialize FastAPI app
-app = FastAPI()
+app = FastAPI(title="Drai")
 
 origins = [
     "http://localhost",
