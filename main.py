@@ -54,7 +54,12 @@ messages = [
 
 @app.get("/")
 async def root():
-    return {"greeting": "Hello, World!", "message": "Welcome to Drai API!"}
+    content = {"message": "Hello!"}
+    headers = {'Access-Control-Allow-Headers': 'Content-Type',
+               'Access-Control-Allow-Origin': '*',
+               'Access-Control-Allow-Methods': '*'}
+    return JSONResponse(content=content, headers=headers)
+    # return {"greeting": "Hello, World!", "message": "Welcome to Drai API!"}
 
 
 # POST endpoint to receive user messages
