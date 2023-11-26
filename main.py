@@ -16,10 +16,7 @@ chat_model = "gpt-3.5-turbo"
 origins = [
     "http://localhost",
     "http://localhost:3000",
-    "http://localhost:3000/",
     "http://localhost:3001",
-    "http://localhost:3001/", 
-    "https://drai-production.up.railway.app/",
 ]
 
 app = FastAPI(title="Drai")
